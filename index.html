@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS-Tree 使用示例</title>
+  <script src="./tree.js"></script>
+</head>
+<body>
+  <h3 style="margin-top: 100px; text-align: center;">请打开控制台查看结果！(示例树形数据)</h3>
+  <div style="width: 360px; margin: 0 auto;">
+    <img width="100%" src="./WechatIMG50.jpeg" alt="1">
+  </div>
+
+  <script>
+    let tree = [
+      {
+        id: 'A',
+        pId: 'A',
+        name: 'A',
+        children: [
+          {
+            id: 'B',
+            pId: 'A',
+            name: 'B',
+            children: [
+              {
+                id: 'D',
+                pId: 'B',
+                name: 'D',
+                children: [
+                  {
+                    id: 'G',
+                    pId: 'D',
+                    name: 'G',
+                    children: null,
+                  },
+                ],
+              }
+            ]
+          },
+          {
+            id: 'C',
+            pId: 'A',
+            name: 'C',
+            children: [
+              {
+                id: 'E',
+                pId: 'C',
+                name: 'E',
+                children: null,
+              },
+              {
+                id: 'F',
+                pId: 'C',
+                name: 'F',
+                children: null,
+              },
+            ],
+          },
+        ],
+      }
+    ];
+    console.log(tree);
+
+    // aa(tree);
+    // bb(tree);
+    // cc(tree);
+    // console.log(dd(tree, 'K'));
+    console.log(ee(tree, 'E'));
+  </script>
+</body>
+</html>
