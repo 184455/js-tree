@@ -4,6 +4,8 @@
  * 非递归算法
  */
 
+/* --------------------------------- 遍历算法 ---------------------------------------- */
+
 // 遍历树： 深度优先 先序遍历
 function aa (tree) {
   if (Array.isArray(tree)) {
@@ -44,8 +46,10 @@ function cc (tree) {
   }
 }
 
+/* --------------------------------- 遍历，返回指定节点 ---------------------------------------- */
+
 /**
- * 深度优先 先序遍历，寻找指定的节点
+ * 深度优先，寻找指定的节点，先序遍历
  * 使用数组的：some 迭代方法，找到目标方便结束循环
  * @param {array} tree 源数据 
  * @param {string, number} findId 找寻依据
@@ -69,7 +73,7 @@ function dd (tree, findId) {
 }
 
 /**
- * 广度优先 层次遍历，寻找指定的节点
+ * 广度优先，寻找指定的节点，层次遍历
  * @param {array} tree 源数据 
  * @param {string, number} findId 找寻依据
  * @returns {object} 找到返回整个 item 项，否则返回：null
@@ -95,5 +99,50 @@ function ee (tree, findId) {
   return res;
 }
 
-// 寻找父节点
-function findFatherNode () {}
+/**
+ * 深度优先，寻找指定的节点，返回路径数组
+ * 使用数组的：some 迭代方法，找到目标方便结束循环
+ * @param {array} tree 源数据 
+ * @param {string, number} findId 找寻依据
+ * @returns {object} 找到返回路径数组，否则返回：[]
+ */
+function ff (tree, findId) {
+  let res = [];
+  let funRes = [];
+  if (Array.isArray(tree)) {
+    tree.some((item) => {
+      res.push(item.name); // 这里组织你想要返回的数据结构
+      if (item.id === findId) {
+        return true;
+      } else if (item.children && item.children.length > 0) {
+        funRes = ff(item.children, findId);
+        res.push(...funRes);
+      }
+      // 在当前项递归完成时，根据返回数组的长度判断是否找到元素。如果没有找到，把当前路径出栈
+      if (funRes.length === 0) {
+        res.pop();
+      }
+    })
+  }
+  return res;
+}
+
+/* ------------------------------ 实现猜想 ---------------------------------------- */
+
+// 将树型的数据变成数组
+function breakTeeeToArray (tree, arr = []) {
+  if (Array.isArray(tree)) {
+    tree.forEach((item) => {
+      arr.push(Object.assign({}, item, { children: null }));
+      if (item.children && item.children.length > 0) {
+        breakTeeeToArray(item.children, arr);
+      }
+    })
+  }
+  return arr;
+}
+
+// 将数组变成树
+function arrayToTree (arr) {
+  console.log(arr);
+}
