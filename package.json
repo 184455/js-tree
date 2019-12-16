@@ -1,0 +1,23 @@
+{
+  "name": "better-tree",
+  "version": "1.0.0",
+  "description": "关于 JS 操作树型数据结构的算法。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/184455/js-tree.git"
+  },
+  "keywords": [
+    "js",
+    "tree"
+  ],
+  "author": "184455",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/184455/js-tree/issues"
+  },
+  "homepage": "https://github.com/184455/js-tree#readme"
+}

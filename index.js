@@ -49,7 +49,7 @@ function cc (tree) {
 /* --------------------------------- 遍历，返回指定节点 ---------------------------------------- */
 
 /**
- * 深度优先，寻找指定的节点，先序遍历
+ * 寻找指定节点：深度优先，先序遍历
  * 使用数组的：some 迭代方法，找到目标方便结束循环
  * @param {array} tree 源数据 
  * @param {string, number} findId 找寻依据
@@ -62,7 +62,7 @@ function dd (tree, findId) {
       console.log(item.name);
       if (item.id === findId) {
         console.log('find it.');
-        res = item;
+        res = item; // 组织你想要的数据结构返回
         return true;
       } else if (item.children && item.children.length > 0) {
         res = dd(item.children, findId);
@@ -73,7 +73,7 @@ function dd (tree, findId) {
 }
 
 /**
- * 广度优先，寻找指定的节点，层次遍历
+ * 寻找指定节点：广度优先，层次遍历
  * @param {array} tree 源数据 
  * @param {string, number} findId 找寻依据
  * @returns {object} 找到返回整个 item 项，否则返回：null
@@ -86,7 +86,7 @@ function ee (tree, findId) {
       console.log(item.name);
       if (item.id === findId) {
         console.log('find it.');
-        res = item;
+        res = item; // 组织你想要的数据结构返回
         return true;
       } else if (item.children && item.children.length > 0) {
         levelArr.push(...item.children);
@@ -100,7 +100,7 @@ function ee (tree, findId) {
 }
 
 /**
- * 深度优先，寻找指定的节点，返回路径数组
+ * 寻找指定节点：深度优先，返回路径数组（返回是重点）
  * 使用数组的：some 迭代方法，找到目标方便结束循环
  * @param {array} tree 源数据 
  * @param {string, number} findId 找寻依据
@@ -129,13 +129,18 @@ function ff (tree, findId) {
 
 /* ------------------------------ 实现猜想 ---------------------------------------- */
 
-// 将树型的数据变成数组
-function breakTeeeToArray (tree, arr = []) {
+/**
+ * 将树形结构数据变成线性一维数组
+ * @param {array} tree 源数据
+ * @param {array} arr 递归参数
+ * @returns {array} 返回树的镜像数组
+ */
+function breakTeeToArray (tree, arr = []) {
   if (Array.isArray(tree)) {
     tree.forEach((item) => {
       arr.push(Object.assign({}, item, { children: null }));
       if (item.children && item.children.length > 0) {
-        breakTeeeToArray(item.children, arr);
+        breakTeeToArray(item.children, arr);
       }
     })
   }
@@ -146,3 +151,10 @@ function breakTeeeToArray (tree, arr = []) {
 function arrayToTree (arr) {
   console.log(arr);
 }
+
+module.exports = function () {
+  this.foreachTreeFirstDeep = aa;
+  this.foreachTreeDeepFirst = bb;
+  this.foreachWidly = cc;
+  this.findNode = dd;
+};
