@@ -152,9 +152,10 @@ function arrayToTree (arr) {
   console.log(arr);
 }
 
-module.exports = function () {
-  this.foreachTreeFirstDeep = aa;
-  this.foreachTreeDeepFirst = bb;
-  this.foreachWidly = cc;
-  this.findNode = dd;
-};
+export default {
+  foreachTreeFirstDeep: aa,
+  foreachTreeDeepFirst: bb,
+  foreachWidly: cc,
+  findNode: dd,
+  ff,
+}
